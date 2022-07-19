@@ -16,10 +16,10 @@ const buttonCoffe = document.querySelector('.coffe-shop')
 const buttonFire = document.querySelector('.fire')
 
 //Sons
-const treeAudio = new Audio("/sounds/Floresta.wav")
-const rainAudio = new Audio("/sounds/Chuva.wav")
-const coffeShopAudio = new Audio("/sounds/Cafeteria.wav")
-const fireAudio = new Audio("/sounds/Lareira.wav")
+const treeAudio = new Audio("https://s17.aconvert.com/convert/p3r68-cdx67/idvvy-4ex96.mp3")
+const rainAudio = new Audio("https://s31.aconvert.com/convert/p3r68-cdx67/db3me-msrjq.mp3")
+const coffeShopAudio = new Audio("https://s27.aconvert.com/convert/p3r68-cdx67/hqili-azbbu.mp3")
+const fireAudio = new Audio("https://s33.aconvert.com/convert/p3r68-cdx67/g0hlp-gsltr.mp3")
 
 let timer
 function countDown() {
