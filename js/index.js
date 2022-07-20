@@ -19,7 +19,7 @@ const buttonFire = document.querySelector('.fire')
 const treeAudio = new Audio("https://github.com/GabrielDiasz/focus-time-2/blob/main/sounds/Floresta.mp3?raw=true")
 const rainAudio = new Audio("https://github.com/GabrielDiasz/focus-time-2/blob/main/sounds/Chuva.mp3?raw=true")
 const coffeShopAudio = new Audio("https://github.com/GabrielDiasz/focus-time-2/blob/main/sounds/Cafeteria.mp3?raw=true")
-const fireAudio = new Audio("https://github.com/GabrielDiasz/focus-time-2/blob/main/sounds/Lareira.mp3")
+const fireAudio = new Audio("https://github.com/GabrielDiasz/focus-time-2/blob/main/sounds/Lareira.mp3?raw=true")
 
 let timer
 function countDown() {
