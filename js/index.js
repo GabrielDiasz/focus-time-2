@@ -16,10 +16,10 @@ const buttonCoffe = document.querySelector('.coffe-shop')
 const buttonFire = document.querySelector('.fire')
 
 //Sons ?raw=true
-const treeAudio = new Audio("https://raw.gabrieldiasz.com/gabrieldiasz/focus-time-2/main/Floresta.mp3")
-const rainAudio = new Audio("https://raw.gabrieldiasz.com/gabrieldiasz/focus-time-2/main/Chuva.mp3")
-const coffeShopAudio = new Audio("https://raw.gabrieldiasz.com/gabrieldiasz/focus-time-2/main/Cafeteria.mp3")
-const fireAudio = new Audio("https://raw.gabrieldiasz.com/gabrieldiasz/focus-time-2/main/Lareira.mp3")
+const treeAudio = new Audio("https://github.com/GabrielDiasz/focus-time-2/blob/main/sounds/Floresta.mp3?raw=true")
+const rainAudio = new Audio("https://github.com/GabrielDiasz/focus-time-2/blob/main/sounds/Chuva.mp3?raw=true")
+const coffeShopAudio = new Audio("https://github.com/GabrielDiasz/focus-time-2/blob/main/sounds/Cafeteria.mp3?raw=true")
+const fireAudio = new Audio("https://github.com/GabrielDiasz/focus-time-2/blob/main/sounds/Lareira.mp3")
 
 let timer
 function countDown() {
