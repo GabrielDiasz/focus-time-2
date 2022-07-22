@@ -2,7 +2,7 @@
 
 Desafio do stage 05 do programa Explorer da Rocketseat.
 
-Sobre o desafio:
+# Sobre o desafio:
 
 Nesse desafio foi proposto a recriação de um layout de um contador de tempo, com botões e animações, a parte avançada do desafio foi criar a versão "dark mode".
 
