@@ -23,6 +23,32 @@ main {
   gap: 19.2rem;
 }
 
+body.dark-mode {
+  background: #121214;
+}
+
+body.dark-mode .text{
+  color:#E1E1E6;
+} 
+
+body.dark-mode .buttons svg path,
+body.dark-mode .sounds button svg path {
+  fill: #E1E1E6;
+}
+
+body.dark-mode .sounds button{
+  background-color: #29292E;
+}
+
+body.dark-mode .sounds input,
+body.dark-mode .sounds input::-webkit-slider-thumb {
+  background-color: #E1E1E6;
+}
+
+body.dark-mode .sounds button.selected {
+  background-color: #0A3442;
+}
+
 .text {
   display: flex;
   justify-content: center;
@@ -56,18 +82,68 @@ button {
 }
 
 .card {
+  height: 17rem;
+  width: 17rem;
   background: #E1E1E6;
   padding: 4.8rem;
   border-radius: 2.4rem;
 }
 
 .sounds {
-  width: 30.8rem;
+  width: 32.2rem;
+  height: 32.2rem;
   display: grid;
   gap: 3.2rem;
   grid-template-areas: 
   "A B"
   "C D";
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+}
+
+input {
+  position: fixed;
+  z-index: 2;
+
+  appearance: none;
+  background: black;
+  outline: none;
+  opacity: 1;
+  height: 4px;
+  width: 125px;
+  border-radius: 5px;
+  transform: translateY(13rem) translateX(-14.8rem);
+}
+
+input::-webkit-slider-thumb {
+
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: black;
+  cursor: pointer;
+  border-radius: 500px;
+}
+
+input.swap,
+input.swap::-webkit-slider-thumb {
+  background-color: white
+}
+
+#tree {
+  grid-area: A;
+}
+
+#rain {
+  grid-area: B;
+}
+
+#coffee-shop {
+  grid-area: C;
+}
+
+#fire {
+  grid-area: D;
 }
 
 .hide {
@@ -76,10 +152,6 @@ button {
 
 .selected{
   background: #02799D;
-}
-
-.selected-dark {
-  background-color: #0A3442;
 }
 
 .selected svg path{
@@ -114,5 +186,3 @@ button {
 .input-range-light{
   accent-color: white;
 }
-
-
