@@ -15,20 +15,31 @@ const buttonRain = document.querySelector('.rain')
 const buttonCoffe = document.querySelector('.coffe-shop')
 const buttonFire = document.querySelector('.fire')
 
-//Sons ?raw=true
+//Botões darkmode
+const buttonLight = document.querySelector('.light')
+const buttonDark = document.querySelector('.dark')
+
+//Sons
 const treeAudio = new Audio("https://github.com/GabrielDiasz/focus-time-2/blob/main/sounds/Floresta.mp3?raw=true")
 const rainAudio = new Audio("https://github.com/GabrielDiasz/focus-time-2/blob/main/sounds/Chuva.mp3?raw=true")
 const coffeShopAudio = new Audio("https://github.com/GabrielDiasz/focus-time-2/blob/main/sounds/Cafeteria.mp3?raw=true")
 const fireAudio = new Audio("https://github.com/GabrielDiasz/focus-time-2/blob/main/sounds/Lareira.mp3?raw=true")
+const kitchenTimer = new Audio("https://github.com/maykbrito/automatic-video-creator/blob/master/audios/kichen-timer.mp3?raw=true")
 
+//Input range
+const inputRange = document.querySelector('.input-range')
+const inputRange1 = document.querySelector('.input-range1')
+const inputRange2 = document.querySelector('.input-range2')
+const inputRange3 = document.querySelector('.input-range3')
 let timer
+
+
 function countDown() {
-  timer = setTimeout(function () {
+  timer = setTimeout(() => {
     let seconds = Number(secondsDisplay.textContent)
     let minutes = Number(minutesDisplay.textContent)
-
+    
     if (minutes <= 0 && seconds <= 0) {
-      const kitchenTimer = new Audio("https://github.com/maykbrito/automatic-video-creator/blob/master/audios/kichen-timer.mp3?raw=true")
       kitchenTimer.play()
       return
     }
@@ -45,14 +56,32 @@ function countDown() {
   }, 1000)
 }
 
-//Input range
-const inputRange = document.querySelector('.input-range')
-const inputRange1 = document.querySelector('.input-range1')
-const inputRange2 = document.querySelector('.input-range2')
-const inputRange3 = document.querySelector('.input-range3')
+inputRange.oninput = function () {
+  treeAudio.volume = inputRange.value
+}
+inputRange1.oninput = function () {
+  rainAudio.volume = inputRange1.value
+}
+inputRange2.oninput = function () {
+  coffeShopAudio.volume = inputRange2.value
+}
+inputRange3.oninput = function () {
+  fireAudio.volume = inputRange3.value
+}
 
-function setVolume(value, audio) {
-  audio.volume = value
+function handleButtonSwap(button, audio, input) {
+  input.classList.toggle('swap')
+  if (button.classList.contains('selected')) {
+
+    button.classList.remove('selected')
+    audio.pause()
+
+  } else {
+
+    button.classList.add('selected')
+    audio.play()
+    audio.loop = true
+  }
 }
 
 //Ação dos botões de controle
@@ -67,7 +96,7 @@ buttonMore.addEventListener('click', function () {
 
 buttonLess.addEventListener('click', function () {
   if (minutes <= 0) {
-
+    return
   } else {
     minutes -= 5
     minutesDisplay.textContent = String(minutes).padStart(2, "0")
@@ -82,119 +111,30 @@ buttonStop.addEventListener('click', function () {
 
 //Ação dos botões de sons
 buttonTree.addEventListener('click', function () {
-  buttonTree.classList.add('selected')
-  inputRange.classList.add('input-range-light')
-  treeAudio.play()
-  treeAudio.loop = true
-  inputRange.addEventListener('input', () => {
-    setVolume(inputRange.value, treeAudio)
-  })
-  // buttonTree.addEventListener('click', function () {
-  //   buttonTree.classList.remove('selected')
-  //   treeAudio.pause()
-  //   treeAudio.loop = false
-  // })
+  handleButtonSwap(buttonTree, treeAudio, inputRange)
 })
 
 buttonRain.addEventListener('click', function () {
-  buttonRain.classList.add('selected')
-  inputRange1.classList.add('input-range-light')
-
-  rainAudio.play()
-  rainAudio.loop = true
-
-  inputRange1.addEventListener('input', () => {
-    setVolume(inputRange1.value, rainAudio)
-  })
-  // buttonRain.addEventListener('click', function () {
-  //   buttonRain.classList.remove('selected')
-  //   rainAudio.pause()
-  //   rainAudio.loop = false
-  // })
+  handleButtonSwap(buttonRain, rainAudio, inputRange1)
 })
 
 buttonCoffe.addEventListener('click', function () {
-  buttonCoffe.classList.add('selected')
-  inputRange2.classList.add('input-range-light')
-
-  coffeShopAudio.play()
-  coffeShopAudio.loop = true
-
-  inputRange2.addEventListener('input', () => {
-    setVolume(inputRange2.value, coffeShopAudio)
-  })
-  // buttonCoffe.addEventListener('click', function () {
-  //   buttonCoffe.classList.remove('selected')
-  //   coffeShopAudio.pause()
-  //   coffeShopAudio.loop = false
-  // })
+  handleButtonSwap(buttonCoffe, coffeShopAudio, inputRange2) 
 })
 
-//Som para mas não volta
 buttonFire.addEventListener('click', function () {
-  buttonFire.classList.add('selected')
-  inputRange3.classList.add('input-range-light')
-
-  fireAudio.play()
-  fireAudio.loop = true
-
-  inputRange3.addEventListener('input', () => {
-    setVolume(inputRange3.value, fireAudio)
-  })
+  handleButtonSwap(buttonFire, fireAudio, inputRange3)
 })
-
-
-const buttonLight = document.querySelector('.light')
-const buttonDark = document.querySelector('.dark')
 
 buttonLight.addEventListener('click', function () {
-  buttonDark.classList.remove('hide')
-  buttonLight.classList.add('hide')
-  document.body.style.backgroundColor = '#121214'
+  buttonDark.classList.toggle('hide')
+  buttonLight.classList.toggle('hide')
+  document.body.classList.add('dark-mode')
 
-  document.querySelector('.icon-light').classList.add('icon-dark')
-  document.querySelector('.icon-light1').classList.add('icon-dark')
-  document.querySelector('.icon-light2').classList.add('icon-dark')
-  document.querySelector('.icon-light3').classList.add('icon-dark')
-  document.querySelector('.icon-light4').classList.add('icon-dark')
-  document.querySelector('.icon-light5').classList.add('icon-dark')
-  document.querySelector('.icon-light6').classList.add('icon-dark')
-  document.querySelector('.icon-light7').classList.add('icon-dark')
-
-  document.querySelector('.tree').classList.add('card-dark')
-  document.querySelector('.rain').classList.add('card-dark')
-  document.querySelector('.coffe-shop').classList.add('card-dark')
-  document.querySelector('.fire').classList.add('card-dark')
-  document.querySelector('.text').classList.add('text-dark')
-
-  inputRange.classList.add('input-range-light')
-  inputRange1.classList.add('input-range-light')
-  inputRange2.classList.add('input-range-light')
-  inputRange3.classList.add('input-range-light')
 })
 
 buttonDark.addEventListener('click', function(){
-  buttonDark.classList.add('hide')
-  buttonLight.classList.remove('hide')
-  document.body.style.backgroundColor = 'white'
-
-  document.querySelector('.icon-light').classList.remove('icon-dark')
-  document.querySelector('.icon-light1').classList.remove('icon-dark')
-  document.querySelector('.icon-light2').classList.remove('icon-dark')
-  document.querySelector('.icon-light3').classList.remove('icon-dark')
-  document.querySelector('.icon-light4').classList.remove('icon-dark')
-  document.querySelector('.icon-light5').classList.remove('icon-dark')
-  document.querySelector('.icon-light6').classList.remove('icon-dark')
-  document.querySelector('.icon-light7').classList.remove('icon-dark')
-
-  document.querySelector('.tree').classList.remove('card-dark')
-  document.querySelector('.rain').classList.remove('card-dark')
-  document.querySelector('.coffe-shop').classList.remove('card-dark')
-  document.querySelector('.fire').classList.remove('card-dark')
-  document.querySelector('.text').classList.remove('text-dark')
-
-  inputRange.classList.remove('input-range-light')
-  inputRange1.classList.remove('input-range-light')
-  inputRange2.classList.remove('input-range-light')
-  inputRange3.classList.remove('input-range-light')
+  buttonDark.classList.toggle('hide')
+  buttonLight.classList.toggle('hide')
+  document.body.classList.toggle('dark-mode')
 })
